@@ -1,4 +1,4 @@
-FROM viebase
+FROM vie_base
 
 RUN apt-get install -y apache2
 

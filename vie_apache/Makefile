@@ -3,6 +3,9 @@ target:=vie_apache
 build:
 	docker build -t ${target} .
 
+rebuild:
+	docker build -t ${target} --no-cache .
+
 run: build
 	docker run -dit --name ${target} ${target}
 
