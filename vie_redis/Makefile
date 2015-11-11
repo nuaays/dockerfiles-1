@@ -1,4 +1,6 @@
 target:=vie_redis
+host:=localhost
+port:=5000
 
 build:
 	docker build -t ${target} .
@@ -17,3 +19,9 @@ rerun: stoprm run
 
 exec: run
 	docker exec -it ${target} bash
+
+tag:
+	docker tag ${target} ${host}:${port}/${target}
+
+push: tag
+	docker push ${host}:${port}/${target}
