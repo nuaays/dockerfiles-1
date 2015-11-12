@@ -1,0 +1,15 @@
+registry:
+  restart: always
+  image: registry:2
+  container_name: registry
+  ports:
+    - 5000:5000
+  volumes:
+    - /var/lib/registry:/var/lib/registry
+    - ./config.yml:/etc/docker/registry/config.yml
+  links:
+    - cache
+cache:
+  image: vie_redis
+  restart: always
+  command: "--maxmemory 16mb --maxmemory-policy allkeys-lru"

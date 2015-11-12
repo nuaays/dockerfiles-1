@@ -1,0 +1,17 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+storage:
+  filesystem:
+    rootdirectory: /var/lib/registry
+  cache:
+    blobdescriptor: redis
+http:
+  addr: :5000
+  headers:
+    X-Content-Type-Options: [nosniff]
+
+redis:
+  addr: cache:6379
+  db: 0
